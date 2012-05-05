@@ -19,11 +19,11 @@ import static org.junit.Assert.assertThat;
  */
 public class SingleActorTests {
     @Test
-    public void aDumbActorStaysWhereItIs() {
+    public void aDumbActorCanStayWhereItIs() {
         // given
         ActorId id = new ActorId(4765);
         Stage aStage = new Stage(new EmptyStage());
-        Actor dumbActor = new DumbActor(id, 7, 11);
+        Actor dumbActor = new DumbActor(id, 7, 11, 0, 0);
 
         // when
         aStage.addActor(dumbActor);
@@ -38,5 +38,23 @@ public class SingleActorTests {
         // then
         assertThat(nextTick.getActor(id).x, is(7));
         assertThat(nextTick.getActor(id).y, is(11));
+    }
+
+    @Test
+    public void aDumbActorStaysCanHaveAVelocity() {
+        // given
+        ActorId id = new ActorId(4765);
+        Stage aStage = new Stage(new EmptyStage());
+        Actor dumbActor = new DumbActor(id, 7, 11, 1, 0);
+        aStage.addActor(dumbActor);
+
+        // when
+        Stage nextTick = aStage.tick();
+
+        // then
+        assertThat(nextTick.getActor(id).x, is(8));
+        assertThat(nextTick.getActor(id).y, is(11));
+        assertThat(((DumbActor) nextTick.getActor(id)).dx, is(1));
+        assertThat(((DumbActor) nextTick.getActor(id)).dy, is(0));
     }
 }

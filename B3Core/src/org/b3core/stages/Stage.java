@@ -26,20 +26,27 @@ public class Stage {
         this.stage = stage;
     }
 
-    private void processAllActors() {
-        // Director?
-        oldActors.putAll(stage.oldActors);
-        oldActors.putAll(stage.newActors);
-    }
-
     public void addActor(Actor actor) {
         newActors.put(actor.id, actor);
     }
 
     public Stage tick() {
+        // Director?
         Stage newStage = new Stage(this);
-        newStage.processAllActors();
+        newStage.copyOldActors();
+        newStage.moveAllActors();
         return newStage;
+    }
+
+    private void copyOldActors() {
+        oldActors.putAll(stage.oldActors);
+        oldActors.putAll(stage.newActors);
+    }
+
+    private void moveAllActors() {
+        for(ActorId id:oldActors.keySet()) {
+            oldActors.put(id, oldActors.get(id).move());
+        }
     }
 
     public Actor getActor(ActorId id) {

@@ -9,7 +9,17 @@ package org.b3core.actors;
  */
 public class DumbActor extends Actor {
 
-    public DumbActor(ActorId id, int x, int y) {
+    public final int dx;
+    public final int dy;
+
+    public DumbActor(ActorId id, int x, int y, int dx, int dy) {
         super(id, x, y);
+        this.dx = dx;
+        this.dy = dy;
+    }
+
+    @Override
+    public Actor move() {
+        return new DumbActor(id, x+dx, y+dy, dx, dy);
     }
 }

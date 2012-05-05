@@ -17,4 +17,8 @@ public class Actor {
         this.x = x;
         this.y = y;
     }
+
+    public Actor move() {
+        return this;
+    }
 }
