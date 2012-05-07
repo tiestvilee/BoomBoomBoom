@@ -1,12 +1,10 @@
 package org.b3core.stages;
 
+import org.b3core.actions.ActorAction;
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorId;
-import sun.jvm.hotspot.debugger.linux.x86.LinuxX86ThreadContext;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,8 +16,8 @@ import java.util.Map;
  */
 public class Stage {
     private final Stage stage;
+    private final Map<ActorId, Actor> postActors = new HashMap<ActorId, Actor>();
     private final Map<ActorId, Actor> newActors = new HashMap<ActorId, Actor>();
-    private final Map<ActorId, Actor> oldActors = new HashMap<ActorId, Actor>();
 
 
     public Stage(Stage stage) {
@@ -28,32 +26,46 @@ public class Stage {
 
     public void addActor(Actor actor) {
         newActors.put(actor.id, actor);
+        postActors.put(actor.id, processActor(actor));
     }
 
     public Stage tick() {
         // Director?
         Stage newStage = new Stage(this);
         newStage.copyOldActors();
-        newStage.moveAllActors();
+        newStage.processAllActors();
         return newStage;
     }
 
     private void copyOldActors() {
-        oldActors.putAll(stage.oldActors);
-        oldActors.putAll(stage.newActors);
+        postActors.putAll(stage.postActors);
     }
 
-    private void moveAllActors() {
-        for(ActorId id:oldActors.keySet()) {
-            oldActors.put(id, oldActors.get(id).move());
+    private void processAllActors() {
+        for(ActorId id: postActors.keySet()) {
+            postActors.put(id, processActor(postActors.get(id)));
         }
     }
 
-    public Actor getActor(ActorId id) {
-        Actor actor = oldActors.get(id);
-        if(actor == null) {
-            actor = newActors.get(id);
+    private Actor processActor(Actor actor) {
+        return actor.move();
+    }
+
+    public Actor getPostActor(ActorId id) {
+        return postActors.get(id);
+    }
+
+    public void addAction(ActorId id, ActorAction actorAction) {
+        Actor oldTickActor = getPreActor(id);
+        postActors.put(id, processActor(actorAction.actOn(oldTickActor)));
+
+    }
+
+    private Actor getPreActor(ActorId id) {
+        Actor oldTickActor = stage.getPostActor(id);
+        if(oldTickActor == null) {
+            oldTickActor = newActors.get(id);
         }
-        return actor;
+        return oldTickActor;
     }
 }

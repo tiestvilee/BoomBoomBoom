@@ -1,5 +1,7 @@
 package org.b3core.actors;
 
+import org.b3core.Point;
+
 /**
  * Created with IntelliJ IDEA.
  * User: tiestvilee
@@ -9,13 +11,11 @@ package org.b3core.actors;
  */
 public class Actor {
     public final ActorId id;
-    public final int x;
-    public final int y;
+    public final Point location;
 
-    public Actor(ActorId id, int x, int y) {
+    public Actor(ActorId id, Point location) {
         this.id = id;
-        this.x = x;
-        this.y = y;
+        this.location = location;
     }
 
     public Actor move() {

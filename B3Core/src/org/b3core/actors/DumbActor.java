@@ -1,5 +1,7 @@
 package org.b3core.actors;
 
+import org.b3core.Point;
+
 /**
  * Created with IntelliJ IDEA.
  * User: tiestvilee
@@ -9,17 +11,19 @@ package org.b3core.actors;
  */
 public class DumbActor extends Actor {
 
-    public final int dx;
-    public final int dy;
+    public final Point velocity;
 
-    public DumbActor(ActorId id, int x, int y, int dx, int dy) {
-        super(id, x, y);
-        this.dx = dx;
-        this.dy = dy;
+    public DumbActor(ActorId id, Point location, Point velocity) {
+        super(id, location);
+        this.velocity = velocity;
     }
 
     @Override
     public Actor move() {
-        return new DumbActor(id, x+dx, y+dy, dx, dy);
+        return new DumbActor(id, location.move(velocity), velocity);
+    }
+
+    public Actor changeDirection(Point newVelocity) {
+        return new DumbActor(id, location, newVelocity);
     }
 }

@@ -1,6 +1,7 @@
 package org.b3core.acceptance;
 
-import org.b3core.actors.Actor;
+import org.b3core.Point;
+import org.b3core.actions.ChangeDirection;import org.b3core.actors.Actor;
 import org.b3core.actors.ActorId;
 import org.b3core.actors.DumbActor;
 import org.b3core.stages.Stage;
@@ -23,38 +24,81 @@ public class SingleActorTests {
         // given
         ActorId id = new ActorId(4765);
         Stage aStage = new Stage(new EmptyStage());
-        Actor dumbActor = new DumbActor(id, 7, 11, 0, 0);
+        Actor dumbActor = new DumbActor(id, new Point(7, 11), new Point(0, 0));
 
         // when
         aStage.addActor(dumbActor);
 
         // then
-        assertThat(aStage.getActor(id).x, is(7));
-        assertThat(aStage.getActor(id).y, is(11));
+        assertThat(aStage.getPostActor(id).location, is(new Point(7, 11)));
 
         // when
         Stage nextTick = aStage.tick();
 
         // then
-        assertThat(nextTick.getActor(id).x, is(7));
-        assertThat(nextTick.getActor(id).y, is(11));
+        assertThat(aStage.getPostActor(id).location, is(new Point(7, 11)));
     }
 
     @Test
-    public void aDumbActorStaysCanHaveAVelocity() {
+    public void aDumbActorCanHaveAVelocity() {
         // given
         ActorId id = new ActorId(4765);
         Stage aStage = new Stage(new EmptyStage());
-        Actor dumbActor = new DumbActor(id, 7, 11, 1, 0);
+        Actor dumbActor = new DumbActor(id, new Point(7, 11), new Point(1, 0));
+
+        // when
         aStage.addActor(dumbActor);
+
+        // then
+        DumbActor actor = (DumbActor) aStage.getPostActor(id);
+
+        assertThat(actor.location, is(new Point(8, 11)));
+        assertThat(actor.velocity, is(new Point(1, 0)));
 
         // when
         Stage nextTick = aStage.tick();
 
         // then
-        assertThat(nextTick.getActor(id).x, is(8));
-        assertThat(nextTick.getActor(id).y, is(11));
-        assertThat(((DumbActor) nextTick.getActor(id)).dx, is(1));
-        assertThat(((DumbActor) nextTick.getActor(id)).dy, is(0));
+        actor = (DumbActor) nextTick.getPostActor(id);
+
+        assertThat(actor.location, is(new Point(9, 11)));
+        assertThat(actor.velocity, is(new Point(1, 0)));
+    }
+
+    @Test
+    public void aDumbActorCanBeToldToChangeDirection() {
+        // given
+        ActorId id = new ActorId(4765);
+        Stage aStage = new Stage(new EmptyStage());
+        Actor dumbActor = new DumbActor(id, new Point(7, 11), new Point(1, 0));
+        aStage.addActor(dumbActor);
+
+        // when
+        Stage nextTick = aStage.tick();
+        nextTick.addAction(id, new ChangeDirection(new Point(0, 1)));
+
+        // then
+        DumbActor actor = (DumbActor) nextTick.getPostActor(id);
+
+        assertThat(actor.location, is(new Point(8, 12)));
+        assertThat(actor.velocity, is(new Point(0, 1)));
+    }
+
+    @Test
+    public void aNewDumbActorCanBeToldToChangeDirection() {
+        // given
+        ActorId id = new ActorId(4765);
+        Stage aStage = new Stage(new EmptyStage());
+        Actor dumbActor = new DumbActor(id, new Point(7, 11), new Point(0, 0));
+
+        // when
+        aStage.addActor(dumbActor);
+        aStage.addAction(id, new ChangeDirection(new Point(0, 1)));
+
+        // then
+        DumbActor actor = (DumbActor) aStage.getPostActor(id);
+
+        assertThat(actor.location, is(new Point(7, 12)));
+        assertThat(actor.velocity, is(new Point(0, 1)));
     }
 }
