@@ -1,13 +1,5 @@
 package org.b3core.acceptance;
 
-import org.b3core.fundamentals.Point;
-import org.b3core.actions.ChangeDirection;import org.b3core.actors.Actor;
-import org.b3core.actors.ActorId;
-import org.b3core.actors.DumbActor;
-import org.b3core.stages.Stage;
-import org.b3core.stages.EmptyStage;
-import org.junit.Test;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -73,7 +65,7 @@ public class SingleActorTests {
 //
 //        // when
 //        Stage nextTick = aStage.tick();
-//        nextTick.addAction(actorId, new ChangeDirection(new Point(0, 1)));
+//        nextTick.addAction(actorId, new ChangeVelocity(new Point(0, 1)));
 //
 //        // then
 //        DumbActor actor = (DumbActor) nextTick.getPostActor(actorId);
@@ -89,7 +81,7 @@ public class SingleActorTests {
 //
 //        // when
 //        aStage.addActor(dumbActor);
-//        aStage.addAction(actorId, new ChangeDirection(new Point(0, 1)));
+//        aStage.addAction(actorId, new ChangeVelocity(new Point(0, 1)));
 //
 //        // then
 //        DumbActor actor = (DumbActor) aStage.getPostActor(actorId);

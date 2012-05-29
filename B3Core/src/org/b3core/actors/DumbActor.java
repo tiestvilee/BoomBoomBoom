@@ -18,12 +18,12 @@ public class DumbActor extends Actor {
         this.velocity = velocity;
     }
 
-//    @Override
-//    public Actor move() {
-//        return new DumbActor(id, location.move(velocity), velocity);
-//    }
+    @Override
+    public Actor move() {
+        return new DumbActor(id, location.move(velocity), velocity);
+    }
 
-    public Actor changeDirection(Point newVelocity) {
+    public Actor changeVelocity(Point newVelocity) {
         return new DumbActor(id, location, newVelocity);
     }
 }

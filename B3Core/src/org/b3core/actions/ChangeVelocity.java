@@ -22,6 +22,6 @@ public class ChangeVelocity implements ActorAction {
     public Actor actOn(Actor actor) {
         DumbActor dummie = (DumbActor) actor;
 
-        return dummie.changeDirection(newVelocity);
+        return dummie.changeVelocity(newVelocity);
     }
 }

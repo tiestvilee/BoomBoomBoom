@@ -39,4 +39,9 @@ public class Point {
         result = 31 * result + y;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Point(%s, %s)", x, y);
+    }
 }

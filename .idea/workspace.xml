@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e992e36-790c-40a6-b964-9ecbae2ff606" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/Direction.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/Point.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/actions/NoAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/B3Core/test/org/b3core/director/DirectorTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeDirection.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeVelocity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/B3Core.iml" afterPath="$PROJECT_DIR$/B3Core/B3Core.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeDirection.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeDirection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/entities/RectangularEntity.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/entities/RectangularEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/stages/EmptyStage.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/stages/EmptyStage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/fundamentals/Point.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/fundamentals/Point.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/stages/Stage.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/stages/Stage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/test/org/b3core/acceptance/SingleActorTests.java" afterPath="$PROJECT_DIR$/B3Core/test/org/b3core/acceptance/SingleActorTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/test/org/b3core/entities/RectangularEntityTest.java" afterPath="$PROJECT_DIR$/B3Core/test/org/b3core/entities/RectangularEntityTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/test/org/b3core/stages/StageTest.java" afterPath="$PROJECT_DIR$/B3Core/test/org/b3core/stages/StageTest.java" />
     </list>
     <ignored path="BoomBoomBoom.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,42 +74,21 @@
       <file leaf-file-name="Stage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/stages/Stage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="9" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.0">
+            <state line="38" column="0" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#508#525#0" expanded="true" />
+                <element signature="e#578#595#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StageTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/stages/StageTest.java">
+      <file leaf-file-name="DirectorTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/director/DirectorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="0" selection-start="1607" selection-end="1607" vertical-scroll-proportion="1.5526803">
+            <state line="59" column="50" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1437#1568#0" expanded="true" />
-                <element signature="e#1449#1456#0" expanded="true" />
-                <element signature="e#1557#1558#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Director.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Listener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/support/Listener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="32" selection-start="165" selection-end="165" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -117,43 +96,34 @@
       <file leaf-file-name="Point.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/fundamentals/Point.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="13" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
+            <state line="44" column="50" selection-start="954" selection-end="954" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Direction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/fundamentals/Direction.java">
+      <file leaf-file-name="ChangeVelocity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeVelocity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="73" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0">
+            <state line="24" column="27" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmptyStage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/stages/EmptyStage.java">
+      <file leaf-file-name="ActorId.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actors/ActorId.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+            <state line="12" column="11" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DumbActor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java">
+      <file leaf-file-name="Director.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="7" selection-start="452" selection-end="559" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SingleActorTests.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/acceptance/SingleActorTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="7" selection-start="613" selection-end="3052" vertical-scroll-proportion="0.0">
+            <state line="27" column="59" selection-start="699" selection-end="699" vertical-scroll-proportion="0.36044362">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -161,10 +131,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="DumbActor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="4" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Actor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="17" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0">
+            <state line="19" column="0" selection-start="419" selection-end="419" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -183,22 +162,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/stages/stages/EmptyStage.java" />
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actors/ActorId.java" />
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ActorAction.java" />
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeDirection.java" />
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/Point.java" />
-        <option value="$PROJECT_DIR$/B3Core/test/org/b3core/stages/StageTest.kt" />
-        <option value="$PROJECT_DIR$/B3Core/test/TestTest.kt" />
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor2.kt" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/stages/StageK.kt" />
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/stages/EmptyStage.java" />
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java" />
         <option value="$PROJECT_DIR$/B3Core/test/org/b3core/acceptance/SingleActorTests.java" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/support/Listener.java" />
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/stages/Stage.java" />
         <option value="$PROJECT_DIR$/B3Core/test/org/b3core/stages/StageTest.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/stages/Stage.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeDirection.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/fundamentals/Point.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeVelocity.java" />
+        <option value="$PROJECT_DIR$/B3Core/test/org/b3core/director/DirectorTest.java" />
+        <option value="$PROJECT_DIR$/B3Core/test/org/b3core/director/TweenTest.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actions/NoAction.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/director/Tween.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java" />
       </list>
     </option>
   </component>
@@ -221,10 +200,31 @@
             <id>Android</id>
           </State>
           <State>
+            <id>Assignment issues</id>
+          </State>
+          <State>
+            <id>Class metrics</id>
+          </State>
+          <State>
+            <id>Class structure</id>
+          </State>
+          <State>
             <id>Code style issues</id>
           </State>
           <State>
+            <id>Concurrency annotation issues</id>
+          </State>
+          <State>
             <id>CorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>Declaration redundancy</id>
+          </State>
+          <State>
+            <id>Encapsulation issues</id>
+          </State>
+          <State>
+            <id>General</id>
           </State>
           <State>
             <id>Groovy</id>
@@ -236,7 +236,16 @@
             <id>Inheritance issues</id>
           </State>
           <State>
+            <id>Initialization issues</id>
+          </State>
+          <State>
             <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>J2ME issues</id>
+          </State>
+          <State>
+            <id>JUnit issues</id>
           </State>
           <State>
             <id>LintAndroid</id>
@@ -245,12 +254,50 @@
             <id>Logging issues</id>
           </State>
           <State>
+            <id>Memory issues</id>
+          </State>
+          <State>
+            <id>Naming ConventionsGroovy</id>
+          </State>
+          <State>
+            <id>Naming conventions</id>
+          </State>
+          <State>
+            <id>Numeric issues</id>
+          </State>
+          <State>
             <id>Performance issues</id>
           </State>
           <State>
             <id>Potentially confusing code constructsGroovy</id>
           </State>
+          <State>
+            <id>Probable bugs</id>
+          </State>
+          <State>
+            <id>Security issues</id>
+          </State>
+          <State>
+            <id>Serialization issues</id>
+          </State>
+          <State>
+            <id>Threading issues</id>
+          </State>
+          <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+          <State>
+            <id>UI Form Problems</id>
+          </State>
+          <State>
+            <id>Visibility issues</id>
+          </State>
         </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -315,6 +362,68 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="B3Core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BoomBoomBoom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B3Core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="b3core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BoomBoomBoom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B3Core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="b3core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BoomBoomBoom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B3Core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="b3core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="director" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -491,7 +600,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_directory_selection" value="$PROJECT_DIR$/B3Core/src/org/b3core" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/B3Core/test/org/b3core" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="OverrideImplement.combined" value="true" />
@@ -499,7 +608,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="editor.preferences.import" />
+    <property name="options.lastSelected" value="editing.templates" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -516,12 +625,13 @@
       <recent name="org.b3core.actors" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.b3core.director" />
       <recent name="org.b3core.stages" />
       <recent name="org.b3core" />
       <recent name="org.b3core.entities" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StageTest">
+  <component name="RunManager" selected="JUnit.DirectorTest">
     <configuration default="false" name="SingleActorTests" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="B3Core" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -616,6 +726,28 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="DirectorTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="B3Core" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.b3core.director" />
+      <option name="MAIN_CLASS_NAME" value="org.b3core.director.DirectorTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -690,11 +822,12 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.SingleActorTests" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.SingleActorTests.aDumbActorCanBeToldToChangeDirection" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.Tests" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.StageTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DirectorTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -735,6 +868,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3498818" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -750,7 +884,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286052" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3498818" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -814,51 +947,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/B3Core/B3Core.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/kotlin-runtime.jar!/src/kotlin/JUtilCollections.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/kotlin-runtime.jar!/src/kotlin/JUtilMaps.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/kotlin-runtime.jar!/src/kotlin/JUtil.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="24" selection-start="970" selection-end="970" vertical-scroll-proportion="0.69316083">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="17" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/stages/EmptyStage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="7" selection-start="452" selection-end="559" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -869,13 +960,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/fundamentals/Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,30 +975,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/stages/Stage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="9" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#508#525#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/stages/StageTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="1607" selection-end="1607" vertical-scroll-proportion="1.5526803">
+        <state line="16" column="3" selection-start="416" selection-end="416" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1437#1568#0" expanded="true" />
             <element signature="e#1449#1456#0" expanded="true" />
             <element signature="e#1557#1558#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../tui/SongKick/lib/hamcrest-all-1.2.jar!/org/hamcrest/Matcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="17" selection-start="655" selection-end="655" vertical-scroll-proportion="-0.33086875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/stages/Stage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="0" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#578#595#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actors/ActorId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="11" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="419" selection-end="419" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/fundamentals/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="50" selection-start="954" selection-end="954" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeVelocity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="27" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="4" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/director/DirectorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="50" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actions/NoAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="21" selection-start="241" selection-end="241" vertical-scroll-proportion="0.30499077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="59" selection-start="699" selection-end="699" vertical-scroll-proportion="0.36044362">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -64,7 +64,7 @@ public class StageTest {
         updatedActor = null;
 
         // when
-        Actor movedActor = actor.move(new Point(7, 13));
+        Actor movedActor = actor.moveTo(new Point(7, 13));
         stage.updateActor(movedActor);
 
         // then

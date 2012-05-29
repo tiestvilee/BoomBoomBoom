@@ -18,8 +18,11 @@ public class Actor {
         this.location = location;
     }
 
-    public Actor move(Point newPoint) {
-        return new Actor(id, newPoint);
+    public Actor move() {
+        return this;
     }
 
+    public Actor moveTo(Point newPoint) {
+        return new Actor(id, newPoint);
+    }
 }

@@ -1,11 +1,14 @@
 package org.b3core.stages;
 
-import org.b3core.actions.ActorAction;
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorId;
 import org.b3core.support.Listener;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,6 +33,10 @@ public class Stage {
         addActor(actor);
     }
 
+    public Actor getActor(ActorId actorId) {
+        return actors.get(actorId);
+    }
+
     public Map<ActorId,Actor> getActors() {
         return Collections.unmodifiableMap(actors);
     }
@@ -51,6 +58,5 @@ public class Stage {
             listener.notify(event);
         }
     }
-
 
 }
