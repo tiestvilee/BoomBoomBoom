@@ -1,6 +1,6 @@
 package org.b3core.entities;
 
-import org.b3core.Direction;
+import org.b3core.fundamentals.Direction;
 import org.junit.Test;
 
 /**

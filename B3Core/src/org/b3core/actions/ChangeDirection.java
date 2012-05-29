@@ -1,6 +1,6 @@
 package org.b3core.actions;
 
-import org.b3core.Point;
+import org.b3core.fundamentals.Point;
 import org.b3core.actors.Actor;
 import org.b3core.actors.DumbActor;
 

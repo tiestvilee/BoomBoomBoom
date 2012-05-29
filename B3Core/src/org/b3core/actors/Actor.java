@@ -1,6 +1,6 @@
 package org.b3core.actors;
 
-import org.b3core.Point;
+import org.b3core.fundamentals.Point;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +18,8 @@ public class Actor {
         this.location = location;
     }
 
-    public Actor move() {
-        return this;
+    public Actor move(Point newPoint) {
+        return new Actor(id, newPoint);
     }
+
 }

@@ -1,4 +1,4 @@
-package org.b3core;
+package org.b3core.fundamentals;
 
 /**
  * Created with IntelliJ IDEA.

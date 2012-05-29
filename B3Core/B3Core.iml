@@ -17,6 +17,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="KotlinRuntime" level="project" />
+    <orderEntry type="library" name="hamcrest-all-1.2" level="project" />
   </component>
 </module>
 

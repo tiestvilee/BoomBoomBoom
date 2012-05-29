@@ -3,9 +3,9 @@ package org.b3core.stages;
 import org.b3core.actions.ActorAction;
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorId;
+import org.b3core.support.Listener;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,57 +15,42 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class Stage {
-    private final Stage stage;
-    private final Map<ActorId, Actor> postActors = new HashMap<ActorId, Actor>();
-    private final Map<ActorId, Actor> newActors = new HashMap<ActorId, Actor>();
+    private final Map<ActorId, Actor> actors = new HashMap<ActorId, Actor>();
+    private List<Listener<Actor>> listeners = new ArrayList<Listener<Actor>>(4);
 
-
-    public Stage(Stage stage) {
-        this.stage = stage;
+    public Stage() {
     }
 
     public void addActor(Actor actor) {
-        newActors.put(actor.id, actor);
-        postActors.put(actor.id, processActor(actor));
+        actors.put(actor.id, actor);
+        notifyListeners(actor);
     }
 
-    public Stage tick() {
-        // Director?
-        Stage newStage = new Stage(this);
-        newStage.copyOldActors();
-        newStage.processAllActors();
+    public void updateActor(Actor actor) {
+        addActor(actor);
+    }
+
+    public Map<ActorId,Actor> getActors() {
+        return Collections.unmodifiableMap(actors);
+    }
+
+    public Stage copy() {
+        Stage newStage = new Stage();
+        for(Actor actor : actors.values()) {
+            newStage.addActor(actor);
+        }
         return newStage;
     }
 
-    private void copyOldActors() {
-        postActors.putAll(stage.postActors);
+    public void addListener(Listener<Actor> listener) {
+        listeners.add(listener);
     }
 
-    private void processAllActors() {
-        for(ActorId id: postActors.keySet()) {
-            postActors.put(id, processActor(postActors.get(id)));
+    private void notifyListeners(Actor event) {
+        for(Listener<Actor> listener : listeners) {
+            listener.notify(event);
         }
     }
 
-    private Actor processActor(Actor actor) {
-        return actor.move();
-    }
 
-    public Actor getPostActor(ActorId id) {
-        return postActors.get(id);
-    }
-
-    public void addAction(ActorId id, ActorAction actorAction) {
-        Actor oldTickActor = getPreActor(id);
-        postActors.put(id, processActor(actorAction.actOn(oldTickActor)));
-
-    }
-
-    private Actor getPreActor(ActorId id) {
-        Actor oldTickActor = stage.getPostActor(id);
-        if(oldTickActor == null) {
-            oldTickActor = newActors.get(id);
-        }
-        return oldTickActor;
-    }
 }

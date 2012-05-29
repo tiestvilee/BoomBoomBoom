@@ -8,7 +8,5 @@ package org.b3core.stages;
  * To change this template use File | Settings | File Templates.
  */
 public class EmptyStage extends Stage {
-    public EmptyStage() {
-        super(null);
-    }
+
 }

@@ -1,6 +1,6 @@
 package org.b3core.actors;
 
-import org.b3core.Point;
+import org.b3core.fundamentals.Point;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,10 +18,10 @@ public class DumbActor extends Actor {
         this.velocity = velocity;
     }
 
-    @Override
-    public Actor move() {
-        return new DumbActor(id, location.move(velocity), velocity);
-    }
+//    @Override
+//    public Actor move() {
+//        return new DumbActor(id, location.move(velocity), velocity);
+//    }
 
     public Actor changeDirection(Point newVelocity) {
         return new DumbActor(id, location, newVelocity);
