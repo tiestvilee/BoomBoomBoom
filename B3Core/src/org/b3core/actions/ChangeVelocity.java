@@ -11,10 +11,11 @@ import org.b3core.actors.DumbActor;
  * Time: 20:15
  * To change this template use File | Settings | File Templates.
  */
-public class ChangeDirection implements ActorAction {
+public class ChangeVelocity implements ActorAction {
+
     public final Point newVelocity;
 
-    public ChangeDirection(Point newVelocity) {
+    public ChangeVelocity(Point newVelocity) {
         this.newVelocity = newVelocity;
     }
 
