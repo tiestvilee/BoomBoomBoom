@@ -11,7 +11,11 @@ import org.b3core.fundamentals.Point;
  */
 public class DumbActor extends Actor {
 
-    public final Point velocity;
+    public Point velocity;
+
+    public DumbActor() {
+        // for actor cache
+    }
 
     public DumbActor(ActorId id, Point location, Point velocity) {
         super(id, location);
@@ -20,10 +24,17 @@ public class DumbActor extends Actor {
 
     @Override
     public Actor move() {
-        return new DumbActor(id, location.move(velocity), velocity);
+        location = location.move(velocity);
+        return this;
     }
 
     public Actor changeVelocity(Point newVelocity) {
-        return new DumbActor(id, location, newVelocity);
+        velocity = newVelocity;
+        return this;
+    }
+
+    public void copyOnto(Actor newActor) {
+        super.copyOnto(newActor);
+        ((DumbActor) newActor).velocity = velocity;
     }
 }
