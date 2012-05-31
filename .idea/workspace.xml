@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e992e36-790c-40a6-b964-9ecbae2ff606" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/actions/Teleport.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/actors/ActorFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/distributor/Distributor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/B3Core/test/org/b3core/distributor/DistributorTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/B3Core/test/org/b3core/acceptance/SingleActorTests.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/actors/DumbActor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/director/DirectorFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java" afterPath="$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/B3Core/test/org/b3core/director/DirectorTest.java" afterPath="$PROJECT_DIR$/B3Core/test/org/b3core/director/DirectorTest.java" />
     </list>
     <ignored path="BoomBoomBoom.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,25 +76,38 @@
       <file leaf-file-name="Distributor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/distributor/Distributor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="24" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="29" column="38" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DistributorTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DistributorTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/distributor/DistributorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="28" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0">
+            <state line="49" column="94" selection-start="1732" selection-end="1732" vertical-scroll-proportion="0.7109827">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DirectorFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/director/DirectorFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="0" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RectangularEntityTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RectangularEntityTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/entities/RectangularEntityTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="268" selection-end="268" vertical-scroll-proportion="0.30499077">
+            <state line="12" column="13" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -138,7 +145,7 @@
       <file leaf-file-name="Director.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="18" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.0">
+            <state line="41" column="0" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -171,8 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/support/Listener.java" />
-        <option value="$PROJECT_DIR$/B3Core/test/org/b3core/stages/StageTest.java" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/stages/Stage.java" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeDirection.java" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actions/ChangeVelocity.java" />
@@ -183,9 +188,11 @@
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/fundamentals/MasterFactory.java" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/fundamentals/Point.java" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actions/Teleport.java" />
-        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/actors/Actor.java" />
         <option value="$PROJECT_DIR$/B3Core/test/org/b3core/director/DirectorTest.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/director/DirectorFactory.java" />
+        <option value="$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java" />
+        <option value="$PROJECT_DIR$/B3Core/test/org/b3core/distributor/DistributorTest.java" />
         <option value="$PROJECT_DIR$/B3Core/src/org/b3core/distributor/Distributor.java" />
       </list>
     </option>
@@ -921,7 +928,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="967" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -939,7 +946,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24839744" sideWeight="0.6713948" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286052" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286052" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1058,15 +1065,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="18" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/actions/ActorAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="10" selection-start="262" selection-end="262" vertical-scroll-proportion="0.3468208">
@@ -1100,24 +1098,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/entities/RectangularEntityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/director/DirectorFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/director/Director.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="0" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/B3Core/src/org/b3core/distributor/Distributor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="24" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="29" column="38" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/distributor/DistributorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="28" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B3Core/test/org/b3core/entities/RectangularEntityTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="268" selection-end="268" vertical-scroll-proportion="0.30499077">
-          <folding />
+        <state line="49" column="94" selection-start="1732" selection-end="1732" vertical-scroll-proportion="0.7109827">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

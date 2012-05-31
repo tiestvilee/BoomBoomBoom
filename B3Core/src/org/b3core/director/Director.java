@@ -36,6 +36,10 @@ public class Director implements Listener<Actor> {
         return this;
     }
 
+    public Stage getOriginalStage() {
+        return originalStage;
+    }
+
     public Stage getNextStage() {
         return nextStage;
     }
