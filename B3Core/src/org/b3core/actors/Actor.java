@@ -1,9 +1,9 @@
 package org.b3core.actors;
 
-import org.b3core.actions.ActorAction;
-import org.b3core.actions.NoAction;
+import org.b3core.actions.actor.ActorAction;
+import org.b3core.actions.actor.NoAction;
 import org.b3core.fundamentals.Point;
-import org.b3core.stages.Stage;
+import org.b3core.command.stages.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class Actor {
     }
 
     public ActorAction whatNext(Stage originalStage) {
-        return new NoAction();
+        return new NoAction(this.id);
     }
 
     public void copyOnto(Actor newActor) {

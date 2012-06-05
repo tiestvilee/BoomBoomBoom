@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/B3Core/B3Core.iml" filepath="$PROJECT_DIR$/B3Core/B3Core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/B3LocalClient/B3LocalClient.iml" filepath="$PROJECT_DIR$/B3LocalClient/B3LocalClient.iml" />
     </modules>
   </component>
 </project>
