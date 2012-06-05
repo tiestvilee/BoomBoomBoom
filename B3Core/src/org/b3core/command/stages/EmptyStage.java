@@ -1,4 +1,4 @@
-package org.b3core.stages;
+package org.b3core.command.stages;
 
 /**
  * Created with IntelliJ IDEA.

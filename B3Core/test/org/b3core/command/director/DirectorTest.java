@@ -1,14 +1,14 @@
-package org.b3core.director;
+package org.b3core.command.director;
 
-import org.b3core.actions.ActorAction;
-import org.b3core.actions.ChangeVelocity;
-import org.b3core.actions.Teleport;
+import org.b3core.actions.actor.ActorAction;
+import org.b3core.actions.actor.ChangeVelocity;
+import org.b3core.actions.actor.Teleport;
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorFactory;
 import org.b3core.actors.ActorId;
 import org.b3core.actors.DumbActor;
 import org.b3core.fundamentals.Point;
-import org.b3core.stages.Stage;
+import org.b3core.command.stages.Stage;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -68,7 +68,7 @@ public class DirectorTest {
 
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
-        director.applyAction(ACTOR_ID, new ChangeVelocity(new Point(-1, -1)));
+        director.applyAction(new ChangeVelocity(ACTOR_ID, new Point(-1, -1)));
 
         assertThat(originalStage.getActor(ACTOR_ID).location, is(new Point(2, 5)));
         assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(2 - 1, 5 - 1)));
@@ -76,7 +76,7 @@ public class DirectorTest {
 
     @Test
     public void shouldGetActorToDecideItsNewAction() {
-        originalStage.addActor(new DumbActorWithAction(new ChangeVelocity(new Point(3, -1))));
+        originalStage.addActor(new DumbActorWithAction(new ChangeVelocity(ACTOR_ID, new Point(3, -1))));
 
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
@@ -85,7 +85,7 @@ public class DirectorTest {
 
     @Test
     public void shouldUpdateNextStageWhenCurrentStageChangesAndApplyActors() {
-        originalStage.addActor(new DumbActorWithAction(new ChangeVelocity(new Point(-5, 7))));
+        originalStage.addActor(new DumbActorWithAction(new ChangeVelocity(ACTOR_ID, new Point(-5, 7))));
 
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
@@ -97,11 +97,11 @@ public class DirectorTest {
 
     @Test
     public void shouldApplyMultipleActionsToOneActor() {
-        originalStage.addActor(new DumbActorWithAction(new Teleport(new Point(11, 3))));
+        originalStage.addActor(new DumbActorWithAction(new Teleport(ACTOR_ID, new Point(11, 3))));
 
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
-        director.applyAction(ACTOR_ID, new ChangeVelocity(new Point(-2, -5)));
+        director.applyAction(new ChangeVelocity(ACTOR_ID, new Point(-2, -5)));
 
         assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(11 - 2, 3 - 5)));
     }

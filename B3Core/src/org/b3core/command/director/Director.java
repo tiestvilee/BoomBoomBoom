@@ -1,10 +1,9 @@
-package org.b3core.director;
+package org.b3core.command.director;
 
-import org.b3core.actions.ActorAction;
+import org.b3core.actions.actor.ActorAction;
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorFactory;
-import org.b3core.actors.ActorId;
-import org.b3core.stages.Stage;
+import org.b3core.command.stages.Stage;
 import org.b3core.support.Listener;
 
 /**
@@ -30,7 +29,7 @@ public class Director implements Listener<Actor> {
         for(Actor actor : originalStage.getActors().values()) {
             Actor myActor = factory.newActor(actor);
             nextStage.addActor(myActor);
-            applyAction(myActor.id, myActor.whatNext(originalStage));
+            applyAction(myActor.whatNext(originalStage));
         }
 
         return this;
@@ -45,12 +44,12 @@ public class Director implements Listener<Actor> {
     }
 
     public void notify(Actor event) {
-        applyAction(event.id, event.whatNext(originalStage));
+        applyAction(event.whatNext(originalStage));
     }
 
-    public void applyAction(ActorId actorId, ActorAction action) {
-        Actor myActor = nextStage.getActor(actorId);
-        Actor oldActor = originalStage.getActor(actorId);
+    public void applyAction(ActorAction action) {
+        Actor myActor = nextStage.getActor(action.getActorId());
+        Actor oldActor = originalStage.getActor(action.getActorId());
         oldActor.copyOnto(myActor);
 
         myActor

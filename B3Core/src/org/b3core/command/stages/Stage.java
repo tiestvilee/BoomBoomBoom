@@ -1,4 +1,4 @@
-package org.b3core.stages;
+package org.b3core.command.stages;
 
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorId;

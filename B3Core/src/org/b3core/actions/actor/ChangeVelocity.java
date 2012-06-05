@@ -1,5 +1,6 @@
-package org.b3core.actions;
+package org.b3core.actions.actor;
 
+import org.b3core.actors.ActorId;
 import org.b3core.fundamentals.Point;
 import org.b3core.actors.Actor;
 import org.b3core.actors.DumbActor;
@@ -11,11 +12,12 @@ import org.b3core.actors.DumbActor;
  * Time: 20:15
  * To change this template use File | Settings | File Templates.
  */
-public class ChangeVelocity implements ActorAction {
+public class ChangeVelocity extends ActorAction {
 
     public final Point newVelocity;
 
-    public ChangeVelocity(Point newVelocity) {
+    public ChangeVelocity(ActorId actorId, Point newVelocity) {
+        super(actorId);
         this.newVelocity = newVelocity;
     }
 

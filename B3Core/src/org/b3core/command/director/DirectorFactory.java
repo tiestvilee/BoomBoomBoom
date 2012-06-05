@@ -1,4 +1,4 @@
-package org.b3core.director;
+package org.b3core.command.director;
 
 import org.b3core.actors.ActorFactory;
 
