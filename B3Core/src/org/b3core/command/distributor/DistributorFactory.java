@@ -2,6 +2,7 @@ package org.b3core.command.distributor;
 
 import org.b3core.actors.ActorFactory;
 import org.b3core.command.director.DirectorFactory;
+import org.b3core.command.stages.Stage;
 
 /**
  * copyright Tiest Vilee 2012
@@ -15,7 +16,7 @@ public class DistributorFactory {
 
     public DistributorFactory() {
         actorFactory = new ActorFactory();
-        distributor = new Distributor(new DirectorFactory(actorFactory));
+        distributor = new Distributor(new DirectorFactory(actorFactory), new Stage());
     }
 
     public Distributor getDistributor() {

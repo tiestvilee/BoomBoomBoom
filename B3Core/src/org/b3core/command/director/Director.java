@@ -1,6 +1,7 @@
 package org.b3core.command.director;
 
 import org.b3core.actions.actor.ActorAction;
+import org.b3core.actions.actor.NewActor;
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorFactory;
 import org.b3core.command.stages.Stage;
@@ -50,12 +51,16 @@ public class Director implements Listener<Actor> {
     public void applyAction(ActorAction action) {
         Actor myActor = nextStage.getActor(action.getActorId());
         Actor oldActor = originalStage.getActor(action.getActorId());
-        oldActor.copyOnto(myActor);
+        if(myActor != null && oldActor != null) {
+            oldActor.copyOnto(myActor);
 
-        myActor
-            .addAction(action)
-            .applyActions();
-        nextStage.updateActor(myActor);
+            myActor
+                .addAction(action)
+                .applyActions();
+            nextStage.updateActor(myActor);
+        } else {
+            nextStage.addActor(((NewActor) action).actor);
+        }
     }
 
 }

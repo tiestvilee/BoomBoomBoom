@@ -1,11 +1,11 @@
 package org.b3core.command.eventfeed;
 
+import org.b3core.actions.Action;
 import org.b3core.actions.Tick;
 import org.b3core.actions.WithinTickAction;
 import org.b3core.actions.actor.ChangeVelocity;
 import org.b3core.actors.ActorId;
 import org.b3core.command.distributor.Distributor;
-import org.b3core.command.distributor.DistributorFactory;
 import org.b3core.fundamentals.Point;
 import org.b3core.support.Listener;
 import org.junit.Test;
@@ -45,19 +45,18 @@ public class EventFeedTest {
 
     @Test
     public void shouldNotifyProcessedActions() {
+        final Distributor mockDistributor = mock(Distributor.class);
         ChangeVelocity action = new ChangeVelocity(new ActorId(56), new Point(-1, -1));
 
-        Distributor distributor = new DistributorFactory().getDistributor();
-        EventFeed feed = new EventFeed(distributor);
+        EventFeed feed = new EventFeed(mockDistributor);
 
-        feed.addActionListener(new Listener() {
-            public void notify(Object event) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-        });
+        Listener<Action> listenerMock = mock(Listener.class);
+        feed.addActionListener(listenerMock);
 
-        feed.process(new WithinTickAction(0, action));
+        WithinTickAction eventAction = new WithinTickAction(0, action);
+        feed.process(eventAction);
 
+        verify(listenerMock).notify(eventAction);
     }
 
 }

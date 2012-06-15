@@ -5,6 +5,7 @@ import org.b3core.actors.ActorFactory;
 import org.b3core.actors.ActorId;
 import org.b3core.actors.DumbActor;
 import org.b3core.command.director.DirectorFactory;
+import org.b3core.command.stages.Stage;
 import org.b3core.fundamentals.Point;
 import org.junit.Test;
 
@@ -24,7 +25,7 @@ public class DistributorTest {
 
     @Test
     public void shouldCreateDirectorsEveryTick() {
-        Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()));
+        Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()), new Stage());
 
         assertThat(distributor.getDirector(0), not(nullValue()));
         assertThat(distributor.getDirector(1), nullValue());
@@ -43,7 +44,7 @@ public class DistributorTest {
 
     @Test
     public void shouldPropagateActorsThroughAllDirectors() {
-        Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()));
+        Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()), new Stage());
 
         distributor.getDirector(0).getNextStage().addActor(new DumbActor(ACTOR_ID, new Point(5, 7), new Point(1, 2)));
 
@@ -58,7 +59,7 @@ public class DistributorTest {
 
     @Test
     public void shouldPropagateActorActionsThroughAllDirectors() {
-        Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()));
+        Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()), new Stage());
 
         distributor.getDirector(0).getNextStage().addActor(new DumbActor(ACTOR_ID, new Point(7,5), new Point(2,1)));
 
@@ -75,7 +76,7 @@ public class DistributorTest {
 
     @Test
     public void shouldRollAroundWhenReachingMaximumTicks() {
-        Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()));
+        Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()), new Stage());
         assertThat(Distributor.MAX_TICKS, is(5));
 
         distributor.tick(); // 1

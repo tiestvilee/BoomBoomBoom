@@ -2,6 +2,7 @@ package org.b3core.command.director;
 
 import org.b3core.actions.actor.ActorAction;
 import org.b3core.actions.actor.ChangeVelocity;
+import org.b3core.actions.actor.NewActor;
 import org.b3core.actions.actor.Teleport;
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorFactory;
@@ -104,6 +105,15 @@ public class DirectorTest {
         director.applyAction(new ChangeVelocity(ACTOR_ID, new Point(-2, -5)));
 
         assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(11 - 2, 3 - 5)));
+    }
+
+    @Test
+    public void canAddNewActorsToStage() {
+        Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
+
+        director.applyAction(new NewActor(new Actor(ACTOR_ID, new Point(-2, -5))));
+
+        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(-2, -5)));
     }
 
     public static class DumbActorWithAction extends DumbActor {
