@@ -44,8 +44,8 @@ public class Director implements Listener<Actor> {
         return nextStage;
     }
 
-    public void notify(Actor event) {
-        applyAction(event.whatNext(originalStage));
+    public void notify(Actor actor) {
+        applyAction(actor.whatNext(originalStage));
     }
 
     public void applyAction(ActorAction action) {
@@ -59,7 +59,12 @@ public class Director implements Listener<Actor> {
                 .applyActions();
             nextStage.updateActor(myActor);
         } else {
-            nextStage.addActor(((NewActor) action).actor);
+            if(action instanceof NewActor) {
+                Actor actor = ((NewActor) action).actor;
+                nextStage.addActor(actor);
+            } else {
+                nextStage.addActor(originalStage.getActor(action.getActorId()));
+            }
         }
     }
 

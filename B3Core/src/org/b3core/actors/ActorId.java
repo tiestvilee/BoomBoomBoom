@@ -30,4 +30,9 @@ public class ActorId {
     public int hashCode() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "ActorId: " + id;
+    }
 }

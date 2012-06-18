@@ -26,4 +26,9 @@ public class ChangeVelocity extends ActorAction {
 
         return dummie.changeVelocity(newVelocity);
     }
+
+    @Override
+    public String toString() {
+        return String.format("ChangeVelocity on: %s to: %s", actorId, newVelocity);
+    }
 }

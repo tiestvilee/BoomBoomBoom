@@ -10,7 +10,7 @@ import org.b3core.actors.ActorId;
  */
 public abstract class ActorAction {
 
-    private final ActorId actorId;
+    protected final ActorId actorId;
 
     protected ActorAction(ActorId actorId) {
         this.actorId = actorId;

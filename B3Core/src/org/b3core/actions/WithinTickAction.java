@@ -9,8 +9,8 @@ import org.b3core.command.distributor.Distributor;
  * Time: 23:15
  */
 public class WithinTickAction implements Action {
-    private final int whichTick;
-    private final ActorAction actorAction;
+    public final int whichTick;
+    public final ActorAction actorAction;
 
     public WithinTickAction(int whichTick, ActorAction actorAction) {
         this.whichTick = whichTick;
@@ -20,4 +20,9 @@ public class WithinTickAction implements Action {
     public void process(Distributor distributor) {
         distributor.applyActionAt(whichTick, actorAction);
     }
+
+    public String toString() {
+        return String.format("WithinTickAction at:%s doing: %s", whichTick, actorAction);
+    }
+
 }

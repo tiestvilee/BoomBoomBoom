@@ -20,4 +20,9 @@ public class NewActor extends ActorAction {
     public Actor actOn(Actor empty) {
         return actor;
     }
+
+    @Override
+    public String toString() {
+        return String.format("NewActor on: %s to: %s", actorId, actor);
+    }
 }
