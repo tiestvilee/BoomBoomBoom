@@ -2,8 +2,9 @@ package org.b3core.actors;
 
 import org.b3core.actions.actor.ActorAction;
 import org.b3core.actions.actor.NoAction;
-import org.b3core.fundamentals.Point;
 import org.b3core.command.stages.Stage;
+import org.b3core.fundamentals.Point;
+import org.b3core.fundamentals.Rectangle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,24 +18,24 @@ import java.util.List;
  */
 public class Actor {
     public ActorId id;
-    public Point location;
+    public Rectangle location;
     public List<ActorAction> actions = new ArrayList<ActorAction>(4);
 
     public Actor() {
         // for actor cache
     }
 
-    public Actor(ActorId id, Point location) {
+    public Actor(ActorId id, Rectangle location) {
         this.id = id;
         this.location = location;
     }
 
-    public Actor move() {
+    public Actor move(Stage stage) {
         return this;
     }
 
     public Actor moveTo(Point newPoint) {
-        location = newPoint;
+        location = location.offset(newPoint);
         return this;
     }
 
@@ -52,16 +53,16 @@ public class Actor {
         return this;
     }
 
-    public Actor applyActions() {
+    public Actor applyActions(Stage stage) {
         for(ActorAction action : actions) {
             action.actOn(this);
         }
-        move();
+        move(stage);
         return this;
     }
 
     public Actor setLocation(Point point) {
-        location = point;
+        location = location.moveTo(point);
         return this;
     }
 }

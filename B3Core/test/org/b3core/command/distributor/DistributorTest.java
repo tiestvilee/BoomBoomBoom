@@ -7,6 +7,7 @@ import org.b3core.actors.DumbActor;
 import org.b3core.command.director.DirectorFactory;
 import org.b3core.command.stages.Stage;
 import org.b3core.fundamentals.Point;
+import org.b3core.fundamentals.Rectangle;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -46,14 +47,14 @@ public class DistributorTest {
     public void shouldPropagateActorsThroughAllDirectors() {
         Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()), new Stage());
 
-        distributor.getDirector(0).getNextStage().addActor(new DumbActor(ACTOR_ID, new Point(5, 7), new Point(1, 2)));
+        distributor.getDirector(0).getNextStage().addActor(new DumbActor(ACTOR_ID, new Rectangle(5, 7), new Point(1, 2)));
 
         distributor.tick(); // 1
         distributor.tick(); // 2
         distributor.tick(); // 3
         distributor.tick(); // 4
 
-        assertThat(distributor.getDirector(4).getNextStage().getActor(ACTOR_ID).location, is(new Point(5+1+1+1+1,7+2+2+2+2)));
+        assertThat(distributor.getDirector(4).getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(5+1+1+1+1,7+2+2+2+2)));
 
     }
 
@@ -61,7 +62,7 @@ public class DistributorTest {
     public void shouldPropagateActorActionsThroughAllDirectors() {
         Distributor distributor = new Distributor(new DirectorFactory(new ActorFactory()), new Stage());
 
-        distributor.getDirector(0).getNextStage().addActor(new DumbActor(ACTOR_ID, new Point(7,5), new Point(2,1)));
+        distributor.getDirector(0).getNextStage().addActor(new DumbActor(ACTOR_ID, new Rectangle(7,5), new Point(2,1)));
 
         distributor.tick(); // 1
         distributor.tick(); // 2
@@ -70,7 +71,7 @@ public class DistributorTest {
 
         distributor.applyActionAt(2, new ChangeVelocity(ACTOR_ID, new Point(-3, -1)));
 
-        assertThat(distributor.getDirector(4).getNextStage().getActor(ACTOR_ID).location, is(new Point(7+2-3-3-3, 5+1-1-1-1)));
+        assertThat(distributor.getDirector(4).getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(7+2-3-3-3, 5+1-1-1-1)));
 
     }
 

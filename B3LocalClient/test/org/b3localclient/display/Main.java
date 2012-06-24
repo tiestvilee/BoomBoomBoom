@@ -8,6 +8,7 @@ import org.b3core.command.distributor.Distributor;
 import org.b3core.command.distributor.DistributorFactory;
 import org.b3core.command.eventfeed.EventFeed;
 import org.b3core.fundamentals.Point;
+import org.b3core.fundamentals.Rectangle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +31,7 @@ public class Main {
         final SimpleDisplay display = new SimpleDisplay("Latest", distributor, 0);
         final SimpleDisplay oldDisplay = new SimpleDisplay("Oldest", distributor, -4);
 
-        distributor.getLatestDirector(0).applyAction(new NewActor(new DumbActor(new ActorId(42), new Point(50, 50), new Point(0, 0))));
+        distributor.getLatestDirector(0).applyAction(new NewActor(new DumbActor(new ActorId(42), new Rectangle(50, 50), new Point(0, 0))));
         distributor.tick();
         distributor.tick();
         distributor.tick();
@@ -88,16 +89,16 @@ public class Main {
 
             private void adjustDirection() {
                 int vertical = 0, horizontal = 0;
-                if(up && ! down) {
+                if (up && !down) {
                     vertical = -1;
                 }
-                if(down && ! up) {
+                if (down && !up) {
                     vertical = 1;
                 }
-                if(left && ! right) {
+                if (left && !right) {
                     horizontal = -1;
                 }
-                if(right && ! left) {
+                if (right && !left) {
                     horizontal = 1;
                 }
                 distributor.applyActionAt(distributor.currentTick(), new ChangeVelocity(new ActorId(42), new Point(horizontal, vertical)));

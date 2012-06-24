@@ -1,6 +1,10 @@
 package org.b3core.actors;
 
+import org.b3core.command.stages.Stage;
 import org.b3core.fundamentals.Point;
+import org.b3core.fundamentals.Rectangle;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,14 +21,32 @@ public class DumbActor extends Actor {
         // for actor cache
     }
 
-    public DumbActor(ActorId id, Point location, Point velocity) {
+    public DumbActor(ActorId id, Rectangle location, Point velocity) {
         super(id, location);
         this.velocity = velocity;
     }
 
     @Override
-    public Actor move() {
-        location = location.move(velocity);
+    public Actor move(Stage stage) {
+        Rectangle newLocation = location.offset(velocity);
+
+        List<Actor> actors = stage.whatsAt(newLocation);
+
+        for(Actor actor:actors) {
+            if(actor.id.equals(id)) {
+                continue;
+            }
+            if(!location.offset(new Point(velocity.x, 0)).intersects(actor.location)) {
+                newLocation = location.offset(new Point(velocity.x, 0));
+            } else if(!location.offset(new Point(0, velocity.y)).intersects(actor.location)) {
+                newLocation = location.offset(new Point(0, velocity.y));
+            } else {
+                newLocation = location; // if anything intersects this, can't go there...
+            }
+        }
+
+        location = newLocation;
+
         return this;
     }
 

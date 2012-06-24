@@ -8,8 +8,9 @@ import org.b3core.actors.Actor;
 import org.b3core.actors.ActorFactory;
 import org.b3core.actors.ActorId;
 import org.b3core.actors.DumbActor;
-import org.b3core.fundamentals.Point;
 import org.b3core.command.stages.Stage;
+import org.b3core.fundamentals.Point;
+import org.b3core.fundamentals.Rectangle;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,7 +37,7 @@ public class DirectorTest {
 
     @Test
     public void nextStageShouldHaveSameActorsAsCurrentStage() {
-        originalStage.addActor(new Actor(ACTOR_ID, new Point(4,5)));
+        originalStage.addActor(new Actor(ACTOR_ID, new Rectangle(4,5)));
 
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
@@ -45,34 +46,34 @@ public class DirectorTest {
 
     @Test
     public void shouldUpdateNextStageWhenCurrentStageChanges() {
-        originalStage.addActor(new Actor(ACTOR_ID, new Point(2, 5)));
+        originalStage.addActor(new Actor(ACTOR_ID, new Rectangle(2, 5)));
 
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
-        originalStage.updateActor(new Actor(ACTOR_ID, new Point(7, 3)));
+        originalStage.updateActor(new Actor(ACTOR_ID, new Rectangle(7, 3)));
 
-        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(7, 3)));
+        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(7, 3)));
     }
 
     @Test
     public void shouldUpdateActorsUsingDefaultActions() {
-        originalStage.addActor(new DumbActor(ACTOR_ID, new Point(2, 5), new Point(1, 1)));
+        originalStage.addActor(new DumbActor(ACTOR_ID, new Rectangle(2, 5), new Point(1, 1)));
 
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
-        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(2 + 1, 5 + 1)));
+        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(2 + 1, 5 + 1)));
     }
 
     @Test
     public void shouldApplyActionToActor() {
-        originalStage.addActor(new DumbActor(ACTOR_ID, new Point(2, 5), new Point(1, 1)));
+        originalStage.addActor(new DumbActor(ACTOR_ID, new Rectangle(2, 5), new Point(1, 1)));
 
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
         director.applyAction(new ChangeVelocity(ACTOR_ID, new Point(-1, -1)));
 
-        assertThat(originalStage.getActor(ACTOR_ID).location, is(new Point(2, 5)));
-        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(2 - 1, 5 - 1)));
+        assertThat(originalStage.getActor(ACTOR_ID).location, is(new Rectangle(2, 5)));
+        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(2 - 1, 5 - 1)));
     }
 
     @Test
@@ -81,7 +82,7 @@ public class DirectorTest {
 
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
-        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(2 + 3, 5 - 1)));
+        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(2 + 3, 5 - 1)));
     }
 
     @Test
@@ -93,7 +94,7 @@ public class DirectorTest {
         Actor originalStageActor = originalStage.getActor(ACTOR_ID);
         originalStage.updateActor(originalStageActor.setLocation(new Point(7, 3)));
 
-        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(-5 + 7, 7 + 3)));
+        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(-5 + 7, 7 + 3)));
     }
 
     @Test
@@ -104,16 +105,38 @@ public class DirectorTest {
 
         director.applyAction(new ChangeVelocity(ACTOR_ID, new Point(-2, -5)));
 
-        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(11 - 2, 3 - 5)));
+        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(11 - 2, 3 - 5)));
     }
 
     @Test
     public void canAddNewActorsToStage() {
         Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
 
-        director.applyAction(new NewActor(new Actor(ACTOR_ID, new Point(-2, -5))));
+        director.applyAction(new NewActor(new Actor(ACTOR_ID, new Rectangle(-2, -5))));
 
-        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Point(-2, -5)));
+        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(-2, -5)));
+    }
+
+    @Test
+    public void shouldUpdateSubsequentStagesWhenOldStageHasActorAdded() {
+        Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
+
+        Actor originalActor = new DumbActorWithAction(new ChangeVelocity(ACTOR_ID, new Point(-5, 7)));
+        originalStage.addActor(originalActor);
+
+        assertThat(director.getNextStage().getActor(ACTOR_ID), not(nullValue()));
+    }
+
+    @Test
+    public void shouldUpdateNewActorWithActions() {
+        Director director = new Director(new ActorFactory()).nextTickFrom(originalStage);
+
+        Actor newActor = new DumbActor(ACTOR_ID, new Rectangle(-5, 7), new Point(1, 1));
+        director.getNextStage().addActor(newActor);
+
+        director.applyAction(new ChangeVelocity(ACTOR_ID, new Point(-1, -1)));
+
+        assertThat(director.getNextStage().getActor(ACTOR_ID).location, is(new Rectangle(-6, 6)));
     }
 
     public static class DumbActorWithAction extends DumbActor {
@@ -125,7 +148,7 @@ public class DirectorTest {
         }
 
         public DumbActorWithAction(ActorAction action) {
-            super(ACTOR_ID, new Point(2, 5), new Point(1, 1));
+            super(ACTOR_ID, new Rectangle(2, 5), new Point(1, 1));
             this.action = action;
         }
 

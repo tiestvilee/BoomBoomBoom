@@ -19,7 +19,7 @@ public class Teleport extends ActorAction {
     }
 
     public Actor actOn(Actor actor) {
-        actor.location = to;
+        actor.location = actor.location.moveTo(to);
         return actor;
     }
 }

@@ -5,6 +5,8 @@ import org.b3core.actions.Tick;
 import org.b3core.actions.WithinTickAction;
 import org.b3core.actions.actor.ChangeVelocity;
 import org.b3core.actions.actor.NewActor;
+import org.b3core.actions.actor.Teleport;
+import org.b3core.actors.Actor;
 import org.b3core.actors.ActorId;
 import org.b3core.actors.DumbActor;
 import org.b3core.command.distributor.Distributor;
@@ -18,6 +20,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -31,11 +34,11 @@ public class Main2 {
 
     private static int serverTick;
     private static int clientTick;
-    private static final int SLOW_DOWN = 5;
+    private static final int SLOW_DOWN = 1;
     private static final int DELAY = 4;
 
     public static void main(String args[]) {
-        final List<Action> unprocessedEvents = new ArrayList<Action>();
+        final List<Action> unprocessedEvents = Collections.synchronizedList(new ArrayList<Action>());
         final AtomicBoolean keypressed = new AtomicBoolean(false);
 
         DistributorFactory serverDistributorFactory = new DistributorFactory();
@@ -58,8 +61,8 @@ public class Main2 {
         final SimpleDisplay serverDisplay = new SimpleDisplay("Server", serverDistributor, 0);
         final SimpleDisplay clientDisplay = new SimpleDisplay("Client", clientDistributor, 0);
 
-        serverFeed.process(new WithinTickAction(0, new NewActor(new DumbActor(new ActorId(42), new Point(50, 50), new Point(0, 0)))));
-        serverFeed.process(new WithinTickAction(0, new NewActor(new DumbActor(new ActorId(24), new Point(100, 100), new Point(0, 0)))));
+        serverFeed.process(new WithinTickAction(0, new NewActor(new DumbActor(new ActorId(42), new org.b3core.fundamentals.Rectangle(50, 50, 8, 8), new Point(0, 0)))));
+        serverFeed.process(new WithinTickAction(0, new NewActor(new DumbActor(new ActorId(24), new org.b3core.fundamentals.Rectangle(100, 100, 8, 8), new Point(0, 0)))));
         serverFeed.process(new Tick());
         serverFeed.process(new Tick());
         serverFeed.process(new Tick());
@@ -179,29 +182,37 @@ public class Main2 {
                     serverTick++;
                     clientTick++;
 
-                    System.out.println(String.format("server: %s (%s) client: %s (%s)", serverTick, serverDistributor.currentTick(), clientTick, clientDistributor.currentTick()));
+//                    System.out.println(String.format("server: %s (%s) client: %s (%s)", serverTick, serverDistributor.currentTick(), clientTick, clientDistributor.currentTick()));
 
                     List<Action> processedEvents = new ArrayList<Action>();
-                    for(Action action : unprocessedEvents) {
-                        if(((WithinTickAction) action).whichTick < clientTick) {
-                            System.out.println("processing event " + action);
-                            clientFeed.process(action);
-                            processedEvents.add(action);
+                    synchronized (unprocessedEvents) {
+                        for(Action action : unprocessedEvents) {
+                            if(((WithinTickAction) action).whichTick < clientTick) {
+                                System.out.println("processing event " + action);
+                                clientFeed.process(action);
+                                processedEvents.add(action);
+                            }
+                        }
+                        for(Action action: processedEvents) {
+                            unprocessedEvents.remove(action);
                         }
                     }
-                    for(Action action: processedEvents) {
-                        unprocessedEvents.remove(action);
-                    }
 
-                    if(random.nextInt(10) == 0 && !keypressed.get()) {
-                        Point newVelocity = new Point(random.nextInt(3) - 1, random.nextInt(3) - 1);
-                        clientFeed.process(new WithinTickAction(clientTick, new ChangeVelocity(new ActorId(42), newVelocity)));
-                        serverFeed.process(new WithinTickAction(clientTick, new ChangeVelocity(new ActorId(42), newVelocity)));
-                    }
+//                    if(random.nextInt(10) == 0 && !keypressed.get()) {
+//                        Point newVelocity = new Point(random.nextInt(3) - 1, random.nextInt(3) - 1);
+//                        clientFeed.process(new WithinTickAction(clientTick, new ChangeVelocity(new ActorId(42), newVelocity)));
+//                        serverFeed.process(new WithinTickAction(clientTick, new ChangeVelocity(new ActorId(42), newVelocity)));
+//                    }
 
                     if(random.nextInt(10) == 0) {
                         serverFeed.process(new WithinTickAction(serverTick, new ChangeVelocity(new ActorId(24), new Point(random.nextInt(3) - 1, random.nextInt(3) - 1))));
                     }
+                    Actor actor24 = serverDistributor.getLatestDirector(0).getOriginalStage().getActor(new ActorId(24));
+                    if(actor24.location.x < 0 || actor24.location.y < 0
+                        || actor24.location.x > 8 * 20 || actor24.location.y > 8 * 20 ) {
+                        serverFeed.process(new WithinTickAction(serverTick, new Teleport(new ActorId(24), new Point(50,50))));
+                    }
+
 
                     serverDisplay.shouldRepaint.set(true);
                     serverDisplay.repaint();

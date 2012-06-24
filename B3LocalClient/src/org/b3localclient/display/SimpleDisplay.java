@@ -47,7 +47,7 @@ public class SimpleDisplay extends JPanel {
                 graphics.drawLine(0, offset, MAP_SIZE_PX, offset);
             }
 
-            Stage stage = distributor.getLatestDirector(frameOffset).getNextStage();
+            Stage stage = distributor.getLatestDirector(frameOffset).getOriginalStage();
 
             for(Actor actor : stage.getActors().values()) {
                 graphics.fillRect(actor.location.x * STEP_SIZE, actor.location.y * STEP_SIZE, ICON_SIZE_PX, ICON_SIZE_PX);

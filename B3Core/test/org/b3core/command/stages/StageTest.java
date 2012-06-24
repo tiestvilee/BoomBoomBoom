@@ -3,6 +3,7 @@ package org.b3core.command.stages;
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorId;
 import org.b3core.fundamentals.Point;
+import org.b3core.fundamentals.Rectangle;
 import org.b3core.support.Listener;
 import org.junit.Test;
 
@@ -17,13 +18,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class StageTest {
     private ActorId actorId = new ActorId(232344);
-    Point point = new Point(3, 5);
+    Rectangle location = new Rectangle(3, 5);
     public Actor updatedActor;
 
     @Test
     public void stageShouldAcceptNewActors() {
         Stage stage = new Stage();
-        Actor actor = new Actor(actorId, point);
+        Actor actor = new Actor(actorId, location);
 
         stage.addActor(actor);
 
@@ -33,7 +34,7 @@ public class StageTest {
     @Test
     public void stageCanBeCopiedAlongWithItsActors() {
         Stage stage = new Stage();
-        Actor actor = new Actor(actorId, point);
+        Actor actor = new Actor(actorId, location);
         stage.addActor(actor);
 
         Stage newStage = stage.copy();
@@ -45,7 +46,7 @@ public class StageTest {
     @Test
     public void canListenForChangesToActors() {
         Stage stage = new Stage();
-        Actor actor = new Actor(actorId, point);
+        Actor actor = new Actor(actorId, location);
         updatedActor = null;
 
         Listener<Actor> listener = new Listener<Actor>() {

@@ -2,6 +2,7 @@ package org.b3core.command.stages;
 
 import org.b3core.actors.Actor;
 import org.b3core.actors.ActorId;
+import org.b3core.fundamentals.Rectangle;
 import org.b3core.support.Listener;
 
 import java.util.ArrayList;
@@ -59,4 +60,13 @@ public class Stage {
         }
     }
 
+    public List<Actor> whatsAt(Rectangle location) {
+        List<Actor> intersection = new ArrayList<Actor>();
+        for(Actor actor:actors.values()) {
+            if(actor.location.intersects(location)) {
+                intersection.add(actor);
+            }
+        }
+        return intersection;
+    }
 }

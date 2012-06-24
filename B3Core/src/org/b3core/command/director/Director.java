@@ -30,7 +30,9 @@ public class Director implements Listener<Actor> {
         for(Actor actor : originalStage.getActors().values()) {
             Actor myActor = factory.newActor(actor);
             nextStage.addActor(myActor);
-            applyAction(myActor.whatNext(originalStage));
+        }
+        for(Actor actor : originalStage.getActors().values()) {
+            applyAction(nextStage.getActor(actor.id).whatNext(originalStage));
         }
 
         return this;
@@ -51,20 +53,21 @@ public class Director implements Listener<Actor> {
     public void applyAction(ActorAction action) {
         Actor myActor = nextStage.getActor(action.getActorId());
         Actor oldActor = originalStage.getActor(action.getActorId());
-        if(myActor != null && oldActor != null) {
-            oldActor.copyOnto(myActor);
-
-            myActor
-                .addAction(action)
-                .applyActions();
-            nextStage.updateActor(myActor);
-        } else {
-            if(action instanceof NewActor) {
+        if(myActor == null) {
+            if(oldActor == null) {
                 Actor actor = ((NewActor) action).actor;
                 nextStage.addActor(actor);
             } else {
                 nextStage.addActor(originalStage.getActor(action.getActorId()));
             }
+        } else {
+            if(oldActor != null) {
+                oldActor.copyOnto(myActor);
+            }
+            myActor
+                .addAction(action)
+                .applyActions(nextStage);
+            nextStage.updateActor(myActor);
         }
     }
 
